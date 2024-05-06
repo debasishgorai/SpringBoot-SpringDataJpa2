@@ -1,0 +1,72 @@
+package SpringDataJpa7.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails.Address;
+import org.springframework.stereotype.Service;
+
+import SpringDataJpa7.Repository.EmppRepository;
+import SpringDataJpa7.entity.Employee;
+import jakarta.transaction.Transactional;
+
+
+
+@Service
+public class EmployeeService {
+
+	@Autowired
+	private EmppRepository empRepo;
+	//@Autowired
+	//private EmployeeOne emponeRepo;
+	//@Autowired
+	//private AddressRepository addr;
+
+	public EmppRepository getEmpRepo() {
+		return empRepo;
+	}
+	@Autowired
+	public void setEmpRepo(EmppRepository empRepo) {
+		this.empRepo = empRepo;
+	}
+
+//	@Autowired
+//	public void setAddr(AddressRepository addr) {
+//		this.addr = addr;
+//	}
+	@Transactional(rollbackOn =Exception.class )
+	public void saveData() {
+		Employee emp=new Employee();
+		emp.setEmpid(343);
+		emp.setEmpName("MahyajAmit");
+		emp.setEmpSal(5008.00);
+		
+		
+		empRepo.save(emp);
+//		
+//		//int i=10/0;
+// Address add = new Address();
+// add.setAddid(9);
+// add.setCity("baleswarur");
+// add.setEmpid(33);
+// add.setPincode(851565555);
+// add.setState("odishaBh");
+//            addr.save(add);
+ 
+ 
+ 
+ 
+	}
+//		EmployeeOne e1=new EmployeeOne();
+//		e1.setEmpid(100);
+//		e1.setEmpName("Sinu");
+//		e1.setEmpSal(55555);
+//		emponeRepo.save(e1);
+	
+	//	public void SaveData1() {
+			
+		
+	
+		
+		
+	//}
+	
+	}
